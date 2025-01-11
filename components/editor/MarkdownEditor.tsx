@@ -1,19 +1,15 @@
 "use client";
 import { useState } from "react";
 import React from "react";
-import MarkdownRenderer from "@/components/editor/MarkdownRenderer";
 import { Editor } from "@/components/editor/Editor";
+import MarkdownRenderer from "./MarkdownRenderer";
 
-const Home = () => {
-  const [editValue, setEditValue] = useState("");
-  const [showPreview, setShowPreview] = useState(false); // Default: Preview hidden
+const MarkdownEditor = ({ initialContent }: { initialContent: string }) => {
+  const [editValue, setEditValue] = useState(initialContent);
+  const [showPreview, setShowPreview] = useState(false);
 
   return (
-    <div className="min-h-screen p-6 bg-gray-50 ">
-      <h1 className="text-2xl text-black font-bold text-center mb-6">
-        Markdown Previewer
-      </h1>
-
+    <>
       {/* Toggle Button */}
       <div className="flex justify-center mb-4">
         <button
@@ -34,11 +30,10 @@ const Home = () => {
       >
         {/* Editor */}
         <div
-          className={`editor-container border rounded p-4 bg-white shadow-md ${
+          className={`editor-container overflow-hidden  border rounded p-4 bg-white shadow-md ${
             showPreview ? "w-full" : "w-full h-[80vh]"
           }`}
         >
-          <h2 className="text-lg font-semibold mb-2">Markdown Editor</h2>
           <Editor setEditValue={setEditValue} initialHtml={editValue} />
         </div>
 
@@ -46,12 +41,12 @@ const Home = () => {
         {showPreview && (
           <div className="preview-container border rounded p-4 bg-white shadow-md w-full">
             <h2 className="text-lg font-semibold text-black mb-2">Preview</h2>
-            <MarkdownRenderer content={editValue} />
+            <MarkdownRenderer className=" break-words " content={editValue} />
           </div>
         )}
       </div>
-    </div>
+    </>
   );
 };
 
-export default Home;
+export default MarkdownEditor;
