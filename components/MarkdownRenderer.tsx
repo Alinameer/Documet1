@@ -8,6 +8,7 @@ import 'highlight.js/styles/monokai-sublime.css';
 const MarkdownRenderer = ({ content }: { content: string }) => {
   return (
     <div className="prose bg-white">
+      
     <ReactMarkdown
       remarkPlugins={[remarkGfm]} // Enables GitHub-flavored markdown
       rehypePlugins={[rehypeHighlight]} // Enables syntax highlighting

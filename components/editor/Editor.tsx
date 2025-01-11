@@ -38,7 +38,7 @@ function Placeholder() {
   return <div className="editor-placeholder">Start typing...</div>;
 }
 
-export function Editor({ setEditValue, initialHtml }: any) {
+export function Editor({ setEditValue}: any) {
   const editorConfig = {
     namespace: "Editor",
     nodes: [HeadingNode],
