@@ -44,7 +44,7 @@ const Home = () => {
 
         {/* Markdown Preview */}
         {showPreview && (
-          <div className="preview-container border rounded p-4 bg-white shadow-md w-full">
+          <div className="preview-container h-full border rounded p-4 bg-white shadow-md w-full">
             <h2 className="text-lg font-semibold text-black mb-2">Preview</h2>
             <MarkdownRenderer content={editValue} />
           </div>

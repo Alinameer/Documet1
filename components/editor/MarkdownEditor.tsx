@@ -3,6 +3,7 @@ import { useState } from "react";
 import React from "react";
 import { Editor } from "@/components/editor/Editor";
 import MarkdownRenderer from "./MarkdownRenderer";
+import { Button } from "../ui/button";
 
 const MarkdownEditor = ({ initialContent }: { initialContent: string }) => {
   const [editValue, setEditValue] = useState(initialContent);
@@ -12,15 +13,15 @@ const MarkdownEditor = ({ initialContent }: { initialContent: string }) => {
     <>
       {/* Toggle Button */}
       <div className="flex justify-center mb-4">
-        <button
+        <Button
           onClick={() => setShowPreview((prev) => !prev)}
           className="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
         >
-          {showPreview ? "Editor Only" : "Preview Markdown"}
-        </button>
+          {showPreview ? "Editor Only" : "Preview"}
+        </Button>
       </div>
 
-      {/* Editor and Preview Section */}
+
       <div
         className={`${
           showPreview
@@ -30,7 +31,7 @@ const MarkdownEditor = ({ initialContent }: { initialContent: string }) => {
       >
         {/* Editor */}
         <div
-          className={`editor-container overflow-hidden  border rounded p-4 bg-white shadow-md ${
+          className={`editor-container overflow-hidden h-full  border rounded bg-white shadow-md ${
             showPreview ? "w-full" : "w-full h-[80vh]"
           }`}
         >
@@ -39,9 +40,9 @@ const MarkdownEditor = ({ initialContent }: { initialContent: string }) => {
 
         {/* Markdown Preview */}
         {showPreview && (
-          <div className="preview-container border rounded p-4 bg-white shadow-md w-full">
+          <div className="preview-container h-full border rounded p-4 bg-white shadow-md w-full">
             <h2 className="text-lg font-semibold text-black mb-2">Preview</h2>
-            <MarkdownRenderer className=" break-words " content={editValue} />
+            <MarkdownRenderer className=" break-words  " content={editValue} />
           </div>
         )}
       </div>
